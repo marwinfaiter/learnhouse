@@ -21,19 +21,19 @@ ENV NEXT_PUBLIC_LEARNHOUSE_TOP_DOMAIN=buddaphest.se
 ENV NEXT_PUBLIC_LEARNHOUSE_DOMAIN=peertube.buddaphest.se
 ENV NEXT_PUBLIC_LEARNHOUSE_API_URL=https://peertube.buddaphest.se/api/v1/
 ENV NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL=https://peertube.buddaphest.se/
-ENV NEXTAUTH_SECRET=6b9202f9d50559000bf1cded4be010e926979e7baeef5aeb2db27e132aae8606
-ENV NEXTAUTH_URL=https://peertube.buddaphest.se/
+ENV NEXT_PUBLIC_SECRET =6b9202f9d50559000bf1cded4be010e926979e7baeef5aeb2db27e132aae8606
+ENV NEXT_PUBLIC_URL=https://peertube.buddaphest.se/
 
 WORKDIR /app/web
 COPY ./apps/web/package.json ./apps/web/pnpm-lock.yaml* ./
 COPY ./apps/web /app/web
-RUN rm -f .env* 
+RUN rm -f .env*
 RUN if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile && pnpm run build; \
     else echo "Lockfile not found." && exit 1; \
     fi
 
 # Final image
-FROM base as runner 
+FROM base as runner
 RUN addgroup --system --gid 1001 system \
     && adduser --system --uid 1001 app \
     && mkdir .next \
