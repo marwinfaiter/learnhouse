@@ -15,14 +15,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - \
 # Frontend Build
 FROM base AS deps
 
-ENV NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG=false
-ENV NEXT_PUBLIC_LEARNHOUSE_DEFAULT_ORG=default
-ENV NEXT_PUBLIC_LEARNHOUSE_TOP_DOMAIN=buddaphest.se
-ENV NEXT_PUBLIC_LEARNHOUSE_DOMAIN=peertube.buddaphest.se
-ENV NEXT_PUBLIC_LEARNHOUSE_API_URL=https://peertube.buddaphest.se/api/v1/
-ENV NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL=https://peertube.buddaphest.se/
-ENV NEXTAUTH_SECRET=6b9202f9d50559000bf1cded4be010e926979e7baeef5aeb2db27e132aae8606
-ENV NEXTAUTH_URL=https://peertube.buddaphest.se/
+ENV NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG false
+ENV NEXT_PUBLIC_LEARNHOUSE_DEFAULT_ORG default
+ENV NEXT_PUBLIC_LEARNHOUSE_TOP_DOMAIN buddaphest.se
+ENV NEXT_PUBLIC_LEARNHOUSE_DOMAIN peertube.buddaphest.se
+ENV NEXT_PUBLIC_LEARNHOUSE_API_URL https://peertube.buddaphest.se/api/v1/
+ENV NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL https://peertube.buddaphest.se/
+ENV NEXTAUTH_SECRET 6b9202f9d50559000bf1cded4be010e926979e7baeef5aeb2db27e132aae8606
+ENV NEXTAUTH_URL https://peertube.buddaphest.se/
 
 WORKDIR /app/web
 COPY ./apps/web/package.json ./apps/web/pnpm-lock.yaml* ./
