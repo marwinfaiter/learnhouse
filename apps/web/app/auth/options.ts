@@ -45,6 +45,7 @@ export const nextAuthOptions = {
       clientSecret: process.env.LEARNHOUSE_GOOGLE_CLIENT_SECRET || '',
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: getUriWithOrg('auth', '/'),
     verifyRequest: getUriWithOrg('auth', '/'),
