@@ -28,18 +28,18 @@ COPY . .
 # Remove .env files from the final image
 # This is a good practice to avoid leaking sensitive data
 # Learn more about it in the Next.js documentation: https://nextjs.org/docs/basic-features/environment-variables
-RUN rm -f .env*
 
 RUN \
-  if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+if [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
+else echo "Lockfile not found." && exit 1; \
+fi
+RUN rm -f .env*
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-# Install curl 
+# Install curl
 RUN apk add --no-cache curl
 
 ENV NODE_ENV production
