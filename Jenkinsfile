@@ -7,6 +7,9 @@ pipeline {
             }
         }
         stage("Build and push docker image") {
+            when {
+                branch "dev"
+            }
             steps {
                 script {
                     docker.withRegistry('https://releases.docker.buddaphest.se', 'nexus') {
